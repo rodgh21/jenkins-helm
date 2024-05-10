@@ -3,8 +3,8 @@
 # Global Env 설정 (line 50)
 # Credential 설정 (line: 114)
 jenkins:
-  namespaceOverride: jenkinsRudgh21
-  fullnameOverride: jenkinsRudgh21
+  namespaceOverride: jenkinsrudgh21
+  fullnameOverride: jenkinsrudgh21
   controller:
     # image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
     # tag: latest
@@ -60,7 +60,7 @@ jenkins:
           pathType: Prefix
           backend:
             service:
-              name: jenkinsRudgh21
+              name: jenkinsrudgh21
               port:
                 number: 80
           annotations:
@@ -77,7 +77,7 @@ jenkins:
 
   serviceAccountAgent:
     create: true
-    name: jenkinsRudgh21-worker
+    name: jenkinsrudgh21-worker
     # annotations:
     #   eks.amazonaws.com/role-arn: arn:aws:iam::992382711213:role/jenkinsaicc-worker
 
