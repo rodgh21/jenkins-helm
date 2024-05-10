@@ -63,7 +63,6 @@ jenkins:
               name: jenkinsrudgh21
               port:
                 number: 80
-          annotations:
       annotations: 
         nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
