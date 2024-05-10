@@ -1,0 +1,9 @@
+# TODO
+# Jenkins Version Check
+apiVersion: v2
+name: jenkins
+version: 1.0.0
+dependencies:
+  - name: jenkins
+    version: "4.2.12"
+    repository: "https://charts.jenkins.io"

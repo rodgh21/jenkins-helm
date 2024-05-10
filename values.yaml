@@ -1,0 +1,153 @@
+# TODO
+# crowd password (line: 47)
+# Global Env 설정 (line 50)
+# Credential 설정 (line: 114)
+jenkins:
+  namespaceOverride: jenkinsRudgh21
+  fullnameOverride: jenkinsRudgh21
+  controller:
+    image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
+    tag: latest
+    pullPolicy: "Always"
+    release: 1
+    runAsUser: 0
+    jenkinsUriPrefix: "/jenkins"
+    jenkinsOpts: "--requestHeaderSize=258140"
+    javaOpts: >
+      -Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Seoul
+      -Duser.timezone=Asia/Seoul
+    installPlugins: false
+    probes:
+      startupProbe:
+        periodSeconds: 30
+    overrideArgs:
+      - --httpPort=7080
+    servicePort: 80
+    targetPort: 7080
+    resources:
+      requests:
+        cpu: "1"
+        memory: "800Mi"
+      limits:
+        cpu: "1"
+        memory: "800Mi"
+    JCasC:
+      configScripts:
+        general-settings: |
+          jenkins:
+            systemMessage: Welcome to AICC CI/CD by ALM.
+            authorizationStrategy:
+              projectMatrix:
+                permissions:
+                - "GROUP:Overall/Read:authenticated"
+            globalNodeProperties:
+            - envVars:
+                env:
+                - key: "ARGO_GIT_URL"
+                  value: "https://rudgh21.com"
+                
+        crendentials-config: [] 
+        plugin-settings: []
+    jenkinsAdminEmail: h.kyhlee@kalmate.net
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      hostName: rudgh21.com
+      paths:
+        - path: /jenkins
+          pathType: Prefix
+          backend:
+            service:
+              name: jenkinsRudgh21
+              port:
+                number: 80
+          annotations:
+      annotations: 
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+                
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    # annotations:
+    #   eks.amazonaws.com/role-arn: arn:aws:iam::992382711213:role/jenkinsaicc
+
+  serviceAccountAgent:
+    create: true
+    name: jenkinsRudgh21-worker
+    # annotations:
+    #   eks.amazonaws.com/role-arn: arn:aws:iam::992382711213:role/jenkinsaicc-worker
+
+  # awsSecurityGroupPolicies:
+  #   enabled: true
+  #   policies:
+  #     - name: "com-shr-jenkinsaicc"
+  #       securityGroupIds:
+  #         - sg-03c5928b3cfbdf788
+  #       podSelector:
+  #         matchExpressions:
+  #           - key: app.kubernetes.io/component
+  #             operator: In
+  #             values:
+  #               - jenkins-controller
+
+  # agent:
+  #   websocket: true
+  #   namespace: com-shr-jenkinsaicc
+  #   podName: jenkins_worker
+  #   customJenkinsLabels: jenkins_worker
+  #   image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins-worker
+  #   tag: latest
+
+  #   # timeout설정을 2배로 설정
+  #   kubernetesConnectTimeout: 10
+  #   kubernetesReadTimeout: 30
+  #   containerCap: ""
+  #   connectTimeout: 300
+  #   jenkinsUrl: http://eksaicc.koreanair.com/cicd
+  #   command:
+
+  #   resources:
+  #     requests:
+  #       cpu: 3
+  #       memory: 15744Mi
+  #     limits:
+  #       cpu: 4
+  #       memory: 16000Mi
+  #   workingDir: /data/jenkins_worker
+  #   args: ""
+  #   volumes:
+  #     - type: PVC
+  #       claimName: com-shr-jenkinsaicc-worker
+  #       mountPath: /data/jenkins_worker
+  #       readOnly:
+  #         false
+
+  #   additionalContainers:
+  #     - sideContainerName: kaniko
+  #       image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jeknkinsworker-kaniko
+  #       tag: debug
+  #       command: "/busybox/cat"
+  #       args: ""
+  #       workingDir: "/data/jenkins_worker"
+  #       alwaysPullImage: true
+  #       TTYEnabled: true
+  #       resources:
+  #         requests:
+  #           cpu: 1
+  #           memory: 256Mi
+  #         limits:
+  #           cpu: 3
+  #           memory: 15000Mi
+
+  persistence:
+    enabled: false
+    # existingClaim: com-shr-jenkinsaicc
+    # volumes:
+    #   - name: jenkinsaicc-worker
+    #     persistentVolumeClaim:
+    #       claimName: com-shr-jenkinsaicc-worker
+    # mounts:
+    #   - mountPath: /data/jenkins_worker
+    #     name: jenkinsaicc-worker
