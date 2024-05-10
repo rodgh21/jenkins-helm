@@ -6,8 +6,10 @@ jenkins:
   namespaceOverride: jenkinsRudgh21
   fullnameOverride: jenkinsRudgh21
   controller:
-    image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
-    tag: latest
+    # image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
+    # tag: latest
+    image: "jenkins/jenkins"
+    tag: 2.440.1
     pullPolicy: "Always"
     release: 1
     runAsUser: 0
