@@ -9,7 +9,7 @@ jenkins:
     # image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
     # tag: latest
     image: "jenkins/jenkins"
-    tag: "jdk21"
+      tag: jdk21
     pullPolicy: "Always"
     release: 1
     runAsUser: 0
