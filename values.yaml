@@ -38,6 +38,20 @@ jenkins:
         cpu: "1"
         memory: "800Mi"
     JCasC:
+      securityRealm: |-
+        local:
+          allowsSignup: false
+          enableCaptcha: false
+          users:
+            - id: "rudgh21"
+              name: "Jenkins Admin"
+              password: "password"
+            - id: "nlee"
+              name: "Jenkins Admin(nlee)"
+              password: "password"
+            - id: "hjkim"
+              name: "Jenkins Admin(hjkim)"
+              password: "password"
       configScripts:
         general-settings: |
           jenkins:
