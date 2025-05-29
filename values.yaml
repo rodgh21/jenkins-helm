@@ -12,9 +12,13 @@ jenkins:
       # -- Controller image registry
       registry: "docker.io"
       # -- Controller image repository
-      repository: "jenkins/jenkins"
-      tag: jdk21
-    pullPolicy: "Always"
+      # repository: "jenkins/jenkins"
+      # tag: jdk21
+      repository: "jenkins-jdk21"
+      tag: latest
+      
+    # pullPolicy: "Always"
+    pullPolicy: "Never"
     release: 1
     runAsUser: 0
     jenkinsUriPrefix: "/jenkins"
