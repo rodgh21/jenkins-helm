@@ -31,11 +31,11 @@ jenkins:
     targetPort: 7080
     resources:
       requests:
-        cpu: "1"
-        memory: "800Mi"
+        cpu: "0.5"
+        memory: "400Mi"
       limits:
-        cpu: "1"
-        memory: "800Mi"
+        cpu: "0.5"
+        memory: "400Mi"
     JCasC:
       securityRealm: |-
         local:
@@ -54,7 +54,7 @@ jenkins:
       configScripts:
         general-settings: |
           jenkins:
-            systemMessage: Welcome to AICC CI/CD by ALM.
+            systemMessage: Welcome to KYHLEE's CI/CD.
             authorizationStrategy:
               projectMatrix:
                 permissions:
@@ -67,7 +67,7 @@ jenkins:
                 
         crendentials-config: [] 
         plugin-settings: []
-    jenkinsAdminEmail: h.kyhlee@kalmate.net
+    jenkinsAdminEmail: ygrhu0325@naver.com
     ingress:
       enabled: true
       ingressClassName: traefik
