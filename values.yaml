@@ -21,7 +21,7 @@ jenkins:
       -Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Seoul
       -Duser.timezone=Asia/Seoul
       -Dhudson.model.WorkspaceCleanupThread.disabled=true
-    installPlugins: false
+    installPlugins: true
     probes:
       startupProbe:
         periodSeconds: 30

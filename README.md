@@ -9,3 +9,7 @@
 
 - Jenkins Helm Version Upgrade From 4.2.12 to 5.8.49
 - Jenkins Image Tag Changed From 2.440 to jdk21
+
+# 설치 플러그인
+- Kubernetes
+- 
