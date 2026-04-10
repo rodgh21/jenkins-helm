@@ -27,7 +27,7 @@ jenkins:
         periodSeconds: 30
     overrideArgs:
       - --httpPort=7080
-    servicePort: 80
+    servicePort: 7080
     targetPort: 7080
     resources:
       requests:
@@ -79,7 +79,7 @@ jenkins:
             service:
               name: jenkins
               port:
-                number: 80
+                number: 7080
       annotations: 
         nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
         nginx.ingress.kubernetes.io/ssl-redirect: "false"
