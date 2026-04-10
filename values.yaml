@@ -160,12 +160,6 @@ jenkins:
   #           memory: 15000Mi
 
   persistence:
-    enabled: false
-    # existingClaim: com-shr-jenkinsaicc
-    # volumes:
-    #   - name: jenkinsaicc-worker
-    #     persistentVolumeClaim:
-    #       claimName: com-shr-jenkinsaicc-worker
-    # mounts:
-    #   - mountPath: /data/jenkins_worker
-    #     name: jenkinsaicc-worker
+    enabled: true
+    existingClaim: kyhlee-jenkins
+    mountPath: /var/jenkins_home
