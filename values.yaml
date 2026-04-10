@@ -98,8 +98,9 @@ jenkins:
     namespace: jenkins
     podName: jenkins_worker
     customJenkinsLabels: jenkins_worker
-    image: jenkins_worker
-    tag: latest
+    image:
+      repository: "jenkins_worker"
+      tag: "latest"
 
     # timeout설정을 2배로 설정
     kubernetesConnectTimeout: 10
@@ -127,8 +128,9 @@ jenkins:
 
     additionalContainers:
       - sideContainerName: kaniko
-        image: kaniko
-        tag: latest
+        image: 
+          repository: "kaniko"
+          tag: latest
         command: "/busybox/cat"
         args: ""
         workingDir: "/data/jenkins_worker"
