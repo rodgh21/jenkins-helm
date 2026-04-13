@@ -93,56 +93,56 @@ jenkins:
     create: true
     name: jenkinsrudgh21-worker
 
-  agent:
-    websocket: true
-    namespace: jenkins
-    podName: jenkins_worker
-    customJenkinsLabels: jenkins_worker
-    image:
-      repository: "jenkins_worker"
-      tag: "latest"
+  # agent:
+  #   websocket: true
+  #   namespace: jenkins
+  #   podName: jenkins_worker
+  #   customJenkinsLabels: jenkins_worker
+  #   image:
+  #     repository: "jenkins_worker"
+  #     tag: "latest"
 
-    # timeout설정을 2배로 설정
-    kubernetesConnectTimeout: 10
-    kubernetesReadTimeout: 30
-    containerCap: ""
-    connectTimeout: 300
-    jenkinsUrl: http://rudgh21.com/jenkins
-    command:
+  #   # timeout설정을 2배로 설정
+  #   kubernetesConnectTimeout: 10
+  #   kubernetesReadTimeout: 30
+  #   containerCap: ""
+  #   connectTimeout: 300
+  #   jenkinsUrl: http://rudgh21.com/jenkins
+  #   command:
 
-    resources:
-      requests:
-        cpu: 250m
-        memory: 400Mi
-      limits:
-        cpu: 500m
-        memory: 800Mi
-    workingDir: /data/jenkins_worker
-    args: ""
-    volumes:
-      - type: PVC
-        claimName: kyhlee-jenkins-worker-pvc
-        mountPath: /data/jenkins_worker
-        readOnly:
-          false
+  #   resources:
+  #     requests:
+  #       cpu: 250m
+  #       memory: 400Mi
+  #     limits:
+  #       cpu: 500m
+  #       memory: 800Mi
+  #   workingDir: /data/jenkins_worker
+  #   args: ""
+  #   volumes:
+  #     - type: PVC
+  #       claimName: kyhlee-jenkins-worker-pvc
+  #       mountPath: /data/jenkins_worker
+  #       readOnly:
+  #         false
 
-    additionalContainers:
-      - sideContainerName: kaniko
-        image: 
-          repository: "kaniko"
-          tag: latest
-        command: "/busybox/cat"
-        args: ""
-        workingDir: "/data/jenkins_worker"
-        alwaysPullImage: true
-        TTYEnabled: true
-        resources:
-          requests:
-            cpu: 250m
-            memory: 256Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
+  #   additionalContainers:
+  #     - sideContainerName: kaniko
+  #       image: 
+  #         repository: "kaniko"
+  #         tag: latest
+  #       command: "/busybox/cat"
+  #       args: ""
+  #       workingDir: "/data/jenkins_worker"
+  #       alwaysPullImage: true
+  #       TTYEnabled: true
+  #       resources:
+  #         requests:
+  #           cpu: 250m
+  #           memory: 256Mi
+  #         limits:
+  #           cpu: 500m
+  #           memory: 512Mi
 
   persistence:
     enabled: true
