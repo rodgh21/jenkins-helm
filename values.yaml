@@ -27,7 +27,7 @@ jenkins:
         periodSeconds: 30
     overrideArgs:
       - --httpPort=7080
-    servicePort: 7080
+    servicePort: 80
     targetPort: 7080
     resources:
       requests:
