@@ -12,4 +12,6 @@
 
 # 설치 플러그인
 - Kubernetes
-- 
+- Configuration as Code
+- Git
+- PipeLine
