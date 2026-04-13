@@ -36,37 +36,37 @@ jenkins:
       limits:
         cpu: "250m"
         memory: "400Mi"
-    JCasC:
-      securityRealm: |-
-        local:
-          allowsSignup: false
-          enableCaptcha: false
-          users:
-            - id: "rudgh21"
-              name: "Jenkins Admin"
-              password: "password"
-            - id: "nlee"
-              name: "Jenkins Admin(nlee)"
-              password: "password"
-            - id: "hjkim"
-              name: "Jenkins Admin(hjkim)"
-              password: "password"
-      # configScripts:
-      #   general-settings: |
-      #     jenkins:
-      #       systemMessage: Welcome to KYHLEE's CI/CD.
-      #       authorizationStrategy:
-      #         projectMatrix:
-      #           permissions:
-      #           - "GROUP:Overall/Read:authenticated"
-      #       globalNodeProperties:
-      #       - envVars:
-      #           env:
-      #           - key: "ARGO_GIT_URL"
-      #             value: "https://rudgh21.com"
+    # JCasC:
+    #   securityRealm: |-
+    #     local:
+    #       allowsSignup: false
+    #       enableCaptcha: false
+    #       users:
+    #         - id: "rudgh21"
+    #           name: "Jenkins Admin"
+    #           password: "password"
+    #         - id: "nlee"
+    #           name: "Jenkins Admin(nlee)"
+    #           password: "password"
+    #         - id: "hjkim"
+    #           name: "Jenkins Admin(hjkim)"
+    #           password: "password"
+    #   configScripts:
+    #     general-settings: |
+    #       jenkins:
+    #         systemMessage: Welcome to KYHLEE's CI/CD.
+    #         authorizationStrategy:
+    #           projectMatrix:
+    #             permissions:
+    #             - "GROUP:Overall/Read:authenticated"
+    #         globalNodeProperties:
+    #         - envVars:
+    #             env:
+    #             - key: "ARGO_GIT_URL"
+    #               value: "https://rudgh21.com"
                 
-      #   crendentials-config: [] 
-      #   plugin-settings: []
+    #     crendentials-config: [] 
+    #     plugin-settings: []
     jenkinsAdminEmail: ygrhu0325@naver.com
     ingress:
       enabled: true
