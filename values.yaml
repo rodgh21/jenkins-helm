@@ -40,37 +40,37 @@ jenkins:
       limits:
         cpu: "250m"
         memory: "400Mi"
-    # JCasC:
-    #   securityRealm: |-
-    #     local:
-    #       allowsSignup: false
-    #       enableCaptcha: false
-    #       users:
-    #         - id: "rudgh21"
-    #           name: "Jenkins Admin"
-    #           password: "password"
-    #         - id: "nlee"
-    #           name: "Jenkins Admin(nlee)"
-    #           password: "password"
-    #         - id: "hjkim"
-    #           name: "Jenkins Admin(hjkim)"
-    #           password: "password"
-    #   configScripts:
-    #     general-settings: |
-    #       jenkins:
-    #         systemMessage: Welcome to KYHLEE's CI/CD.
-    #         authorizationStrategy:
-    #           projectMatrix:
-    #             permissions:
-    #             - "GROUP:Overall/Read:authenticated"
-    #         globalNodeProperties:
-    #         - envVars:
-    #             env:
-    #             - key: "ARGO_GIT_URL"
-    #               value: "https://rudgh21.com"
+    JCasC:
+      securityRealm: |-
+        local:
+          allowsSignup: false
+          enableCaptcha: false
+          users:
+            - id: "rudgh21"
+              name: "Jenkins Admin"
+              password: "password"
+            - id: "nlee"
+              name: "Jenkins Admin(nlee)"
+              password: "password"
+            - id: "hjkim"
+              name: "Jenkins Admin(hjkim)"
+              password: "password"
+      configScripts:
+        general-settings: |
+          jenkins:
+            systemMessage: Welcome to KYHLEE's CI/CD.
+            authorizationStrategy:
+              projectMatrix:
+                permissions:
+                - "GROUP:Overall/Read:authenticated"
+            globalNodeProperties:
+            - envVars:
+                env:
+                - key: "ARGO_GIT_URL"
+                  value: "https://rudgh21.com/argocd"
                 
-    #     crendentials-config: [] 
-    #     plugin-settings: []
+        crendentials-config: [] 
+        plugin-settings: []
     jenkinsAdminEmail: ygrhu0325@naver.com
     ingress:
       enabled: true
@@ -97,56 +97,56 @@ jenkins:
     create: true
     name: jenkinsrudgh21-worker
 
-  # agent:
-  #   websocket: true
-  #   namespace: jenkins
-  #   podName: jenkins_worker
-  #   customJenkinsLabels: jenkins_worker
-  #   image:
-  #     repository: "jenkins_worker"
-  #     tag: "latest"
+  agent:
+    websocket: true
+    namespace: jenkins
+    podName: jenkins_worker
+    customJenkinsLabels: jenkins_worker
+    image:
+      repository: "jenkins_worker"
+      tag: "latest"
 
-  #   # timeout설정을 2배로 설정
-  #   kubernetesConnectTimeout: 10
-  #   kubernetesReadTimeout: 30
-  #   containerCap: ""
-  #   connectTimeout: 300
-  #   jenkinsUrl: http://rudgh21.com/jenkins
-  #   command:
+    # timeout설정을 2배로 설정
+    kubernetesConnectTimeout: 10
+    kubernetesReadTimeout: 30
+    containerCap: ""
+    connectTimeout: 300
+    jenkinsUrl: http://rudgh21.com/jenkins
+    command:
 
-  #   resources:
-  #     requests:
-  #       cpu: 250m
-  #       memory: 400Mi
-  #     limits:
-  #       cpu: 500m
-  #       memory: 800Mi
-  #   workingDir: /data/jenkins_worker
-  #   args: ""
-  #   volumes:
-  #     - type: PVC
-  #       claimName: kyhlee-jenkins-worker-pvc
-  #       mountPath: /data/jenkins_worker
-  #       readOnly:
-  #         false
+    resources:
+      requests:
+        cpu: 250m
+        memory: 400Mi
+      limits:
+        cpu: 500m
+        memory: 800Mi
+    workingDir: /data/jenkins_worker
+    args: ""
+    volumes:
+      - type: PVC
+        claimName: kyhlee-jenkins-worker-pvc
+        mountPath: /data/jenkins_worker
+        readOnly:
+          false
 
-  #   additionalContainers:
-  #     - sideContainerName: kaniko
-  #       image: 
-  #         repository: "kaniko"
-  #         tag: latest
-  #       command: "/busybox/cat"
-  #       args: ""
-  #       workingDir: "/data/jenkins_worker"
-  #       alwaysPullImage: true
-  #       TTYEnabled: true
-  #       resources:
-  #         requests:
-  #           cpu: 250m
-  #           memory: 256Mi
-  #         limits:
-  #           cpu: 500m
-  #           memory: 512Mi
+    additionalContainers:
+      - sideContainerName: kaniko
+        image: 
+          repository: "kaniko"
+          tag: latest
+        command: "/busybox/cat"
+        args: ""
+        workingDir: "/data/jenkins_worker"
+        alwaysPullImage: true
+        TTYEnabled: true
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
 
   persistence:
     enabled: true
