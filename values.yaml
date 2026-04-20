@@ -4,6 +4,10 @@
 # Credential 설정 (line: 114)
 jenkins:
   controller:
+    # Configuration as Code 플러그인 에러 조치
+    csrf:
+      defaultCrumbIssuer:
+        enabled: false
     # image: 992382711213.dkr.ecr.ap-northeast-2.amazonaws.com/aicc-shr-ecr-jenkins
     # tag: latest
     image:
