@@ -59,10 +59,6 @@ jenkins:
         general-settings: |
           jenkins:
             systemMessage: Welcome to KYHLEE's CI/CD.
-            authorizationStrategy:
-              projectMatrix:
-                permissions:
-                - "GROUP:Overall/Read:authenticated"
             globalNodeProperties:
             - envVars:
                 env:
