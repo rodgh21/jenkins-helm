@@ -12,6 +12,7 @@
 
 # 설치 플러그인
 - Kubernetes
-- Configuration as Code
+- Configuration as Code (defaultCrumbIssuer 조치 필요)
 - Git
 - PipeLine
+- Dark Theme
