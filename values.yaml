@@ -57,8 +57,6 @@ jenkins:
         general-settings: |
           jenkins:
             systemMessage: Welcome to KYHLEE's CI/CD.
-            jenkinsLocation:
-              url: "https://rudgh21.com/jenkins"
             globalNodeProperties:
             - envVars:
                 env:
