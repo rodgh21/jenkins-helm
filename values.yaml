@@ -57,6 +57,8 @@ jenkins:
         general-settings: |
           jenkins:
             systemMessage: Welcome to KYHLEE's CI/CD.
+            jenkinsLocation:
+              url: "https://rudgh21.com/jenkins"
             globalNodeProperties:
             - envVars:
                 env:
@@ -79,8 +81,8 @@ jenkins:
               port:
                 number: 7080
       annotations: 
-        nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
-        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
                 
   rbac:
     create: true
