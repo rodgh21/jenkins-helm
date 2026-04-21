@@ -125,24 +125,24 @@ jenkins:
         readOnly:
           false
 
-    additionalContainers:
-      - sideContainerName: kaniko
-        image: 
-          repository: "kaniko"
-          tag: latest
-        imagePullPolicy: IfNotPresent
-        command: "/busybox/cat"
-        args: ""
-        workingDir: "/data/jenkins_worker"
-        alwaysPullImage: true
-        TTYEnabled: true
-        resources:
-          requests:
-            cpu: 250m
-            memory: 256Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
+    # additionalContainers:
+    #   - sideContainerName: kaniko
+    #     image: 
+    #       repository: "kaniko"
+    #       tag: latest
+    #     imagePullPolicy: IfNotPresent
+    #     command: "/busybox/cat"
+    #     args: ""
+    #     workingDir: "/data/jenkins_worker"
+    #     alwaysPullImage: true
+    #     TTYEnabled: true
+    #     resources:
+    #       requests:
+    #         cpu: 250m
+    #         memory: 256Mi
+    #       limits:
+    #         cpu: 500m
+    #         memory: 512Mi
 
   persistence:
     enabled: true
